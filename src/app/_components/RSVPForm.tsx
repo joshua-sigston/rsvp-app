@@ -7,6 +7,7 @@ import { Label } from '../../components/ui/label'
 import { RadioGroup, RadioGroupItem } from '../../components/ui/radio-group'
 import { Calendar } from '../../components/ui/calendar'
 import { useToast } from '@/hooks/use-toast'
+import { strings } from '../utils/strings'
 
 const RSVPForm = () => {
     const [name, setName] = useState("");
@@ -22,21 +23,21 @@ const RSVPForm = () => {
     }
   return (
     <div className='max-w-md max-auto my-10'>
-      <h1 className="text-2xl font-bold-mb-4">Title</h1>
-      <p className="mb-6">DESC</p>
+      <h1 className="text-2xl font-bold-mb-4">{strings.title}</h1>
+      <p className="mb-6">{strings.description}</p>
       <div className="mb-6">
-        <Label>DETAILS</Label>
-        <p>DATE</p>
+        <Label>{strings.eventDateLabel}</Label>
+        <p>{strings.eventDate}</p>
         <div className="mt-4">
         <Button>
           <MapPin className='w-full'/>
-          STRING LOCATION
+          {strings.viewOnMapButton }
         </Button>
       </div>
       </div>
       <form onSubmit={handleSubmit} className='space-y-6'>
         <div className="">
-          <Label htmlFor='name'>NAME</Label>
+          <Label htmlFor='name'>{strings.nameLabel}</Label>
           <Input id='name' value={name} onChange={(e) => setName(e.target.value)}
           required />
           {errors.name && (
@@ -44,7 +45,7 @@ const RSVPForm = () => {
           )}
         </div>
         <div className="">
-          <Label htmlFor='email'>EMAIL</Label>
+          <Label htmlFor='email'>{strings.emailLabel}</Label>
           <Input id='email' value={email} onChange={(e) => setEmail(e.target.value)}
           required />
           {errors.email && (
@@ -52,24 +53,24 @@ const RSVPForm = () => {
           )}
         </div>
         <div className="">
-          <Label htmlFor='accompany'>ACCOMPANY</Label>
+          <Label htmlFor='accompany'>{strings.accompanyLabel}</Label>
           <Input id='accompany'  value={accompany || ""} onChange={(e) => setAccompany(e.target.value)}
            />
         </div>
         <div className="">
-          <Label>RSVP LABEL</Label>
+          <Label>{strings.rsvpLabel}</Label>
           <RadioGroup value={attendance} onValueChange={setAttendance}>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value='yes' id='yes' />
-              <Label htmlFor='yes'>YES</Label>
+              <Label htmlFor='yes'>{strings.yesOption}</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value='no' id='no' />
-              <Label htmlFor='no'>NO</Label>
+              <Label htmlFor='no'>{strings.noOption}</Label>
             </div>
           </RadioGroup>
         </div>
-        <Button type='submit' disabled={isLoading}>{isLoading ? "Sending..." : "Submit" }</Button>
+        <Button type='submit' disabled={isLoading}>{isLoading ? "Sending..." : strings.submitButton }</Button>
       </form>
     </div>
   )
