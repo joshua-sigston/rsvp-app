@@ -3,8 +3,8 @@ import RSVPForm from "./_components/RSVPForm";
 
 export default function Home() {
   return (
-      <main className="flex h-screen items-center justify-center">
-        <RSVPForm />
-      </main>
+    <main className="flex h-screen items-center justify-center bg-rose-200">
+      <RSVPForm />
+    </main>
   );
 }

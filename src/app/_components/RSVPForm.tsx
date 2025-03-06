@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from "../../components/ui/radio-group";
 import { Calendar } from "../../components/ui/calendar";
 import { useToast } from "@/hooks/use-toast";
 import { strings } from "../utils/strings";
+import { submitRSVP } from "../actions/submitRSVP";
 
 const RSVPForm = () => {
   const [name, setName] = useState("");
@@ -17,9 +18,54 @@ const RSVPForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  // jP647Tr92iAe9FGi
 
-  const handleSubmit = () => {
-    console.log();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!name) {
+      setErrors({ name: "Name is required" });
+      return;
+    }
+
+    if (!email) {
+      setErrors({ email: "Email is required" });
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("accompany", accompany || "0");
+    formData.append("attendance", attendance);
+
+    console.log(formData, "FormData");
+
+    setIsLoading(true);
+
+    const resp = await submitRSVP(formData);
+
+    if (resp.success) {
+      toast({
+        title: "Successful",
+        description: strings.thankYouMessage,
+      });
+      // reset form
+      setName("");
+      setEmail("");
+      setAccompany("");
+      setAttendance("");
+      setErrors({});
+    } else {
+      toast({
+        title: "Error",
+        description: resp.message,
+        variant: "destructive",
+      });
+      //check if email already submitted
+    }
+
+    setIsLoading(false);
   };
 
   const openGoogleMaps = () => {
@@ -34,8 +80,7 @@ const RSVPForm = () => {
       <h1 className="text-2xl font-bold-mb-4">{strings.title}</h1>
       <p className="mb-6">{strings.description}</p>
       <div className="mb-6">
-        <Label>{strings.eventDateLabel}</Label>
-        <p>{new Date(strings.eventDateLabel).toLocaleDateString()}</p>
+        {/* <Label>{strings.eventDateLabel}</Label>
         <Calendar
           mode="single"
           selected={new Date(strings.eventDate)}
@@ -44,7 +89,7 @@ const RSVPForm = () => {
           toDate={new Date(strings.eventDate)}
           defaultMonth={new Date(strings.eventDate)}
           ISOWeek
-        />
+        /> */}
         <div className="mt-4">
           <Button
             type="button"
