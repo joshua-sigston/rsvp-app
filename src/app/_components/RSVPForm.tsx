@@ -1,11 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import {
+  Button,
+  Input,
+  Label,
+  RadioGroup,
+  RadioGroupItem,
+  Calendar,
+} from "@/components/ui";
 import { MapPin } from "lucide-react";
-import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
-import { RadioGroup, RadioGroupItem } from "../../components/ui/radio-group";
-import { Calendar } from "../../components/ui/calendar";
 import { useToast } from "@/hooks/use-toast";
 import { strings } from "../utils/strings";
 import { submitRSVP } from "../actions/submitRSVP";

@@ -1,6 +1,6 @@
 import RSVPTable from "@/app/_components/RSVPTable";
 import { getRSVPs } from "@/app/actions/getRSVPs";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui";
 import { House } from "lucide-react";
 import Link from "next/link";
 import React from "react";
