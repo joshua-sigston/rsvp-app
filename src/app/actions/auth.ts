@@ -5,6 +5,18 @@ import { createClient } from "../utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
+export async function getUserSession() {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase.auth.getSession();
+
+  if (error) {
+    return null;
+  }
+
+  return { status: "success", user: data?.session?.user };
+}
+
 export async function signUp(formData: FormData) {
   const supabase = await createClient();
 

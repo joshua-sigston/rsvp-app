@@ -19,6 +19,7 @@ const dashboard = async () => {
   if (!success) {
     return <div className="container mx-auto mt-8 p-4">{message}</div>;
   }
+
   return (
     <div className="container mx-auto mt-8 p-4">
       <div className="flex justify-between items-center mb-4">
@@ -32,7 +33,6 @@ const dashboard = async () => {
             </Link>
           ) : (
             <>
-              {" "}
               <div className="flex items-center gap-x-2 text-sm">
                 {user?.email}
               </div>
