@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import AuthButton from "./AuthButton";
 import { signUp } from "../actions/auth";
 import { useRouter } from "next/navigation";
+import { Input, Label } from "@/components/ui";
 
 const SignUpForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -25,50 +26,37 @@ const SignUpForm = () => {
     setLoading(false);
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-200">
-            Username
-          </label>
-          <input
-            type="text"
-            placeholder="Username"
-            id="username"
-            name="username"
-            className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-200">
-            Email
-          </label>
-          <input
-            type="email"
-            placeholder="Email"
-            id="Email"
-            name="email"
-            className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-200">
-            Password
-          </label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            id="password"
-            className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
-          />
-        </div>
-        <div className="mt-4">
-          <AuthButton type="Sign up" loading={loading} />
-        </div>
-        {error && <p className="text-red-500">{error}</p>}
-      </form>
-    </div>
+    <form
+      onSubmit={handleSubmit}
+      className="w-[90%] md:w-[70%] lg:w-[40%] space-y-5"
+    >
+      <div className="space-y-3">
+        <Label>Username</Label>
+        <Input
+          type="text"
+          placeholder="Username"
+          id="username"
+          name="username"
+        />
+      </div>
+      <div className="space-y-3">
+        <Label>Email</Label>
+        <Input type="email" placeholder="Email" id="Email" name="email" />
+      </div>
+      <div className="space-y-3">
+        <Label>Password</Label>
+        <Input
+          type="password"
+          placeholder="Password"
+          name="password"
+          id="password"
+        />
+      </div>
+      <div className="mt-4">
+        <AuthButton type="Sign up" loading={loading} />
+      </div>
+      {error && <p className="text-red-500">{error}</p>}
+    </form>
   );
 };
 

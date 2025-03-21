@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui";
 import React, { useTransition } from "react";
 import { FaGithub } from "react-icons/fa";
 
@@ -12,15 +13,10 @@ const LoginGithub = () => {
     });
   };
   return (
-    <div
-      onClick={handleGithubLogin}
-      className="w-full gap-4 hover:cursor-pointer mt-6 h-12 bg-gray-800 rounded-md p-4 flex justify-center items-center"
-    >
+    <Button onClick={handleGithubLogin} className="w-[100%]">
       <FaGithub className="text-white" />
-      <p className="text-white">
-        {isPending ? "Redirecting..." : "Login with Github"}
-      </p>
-    </div>
+      {isPending ? "Redirecting..." : "Login with Github"}
+    </Button>
   );
 };
 

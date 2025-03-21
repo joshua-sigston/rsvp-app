@@ -6,7 +6,7 @@ import ClientComponent from "./_components/ClientComponent";
 
 export default function Home() {
   return (
-    <main className="flex flex-col space-y-3 h-screen items-center justify-center">
+    <main className="flex flex-col space-y-3 h-[100%] items-center justify-center">
       <ClientComponent />
     </main>
   );

@@ -12,5 +12,5 @@ export default async function AuthLayout({
     redirect("/");
   }
 
-  return <>{children}</>;
+  return <div className="h-screen">{children}</div>;
 }
