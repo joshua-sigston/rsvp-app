@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui";
 import { Input } from "@/components/ui/input";
 import {
   Table,
@@ -9,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 import React, { useState } from "react";
 
 interface RSVP {
@@ -31,14 +33,18 @@ const RSVPTable = ({ data }: RSVPTableProps) => {
   );
   return (
     <div>
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-4 space-x-3">
         <Input
           placeholder="Filter by name..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
           className="max-w-sm"
         />
+        <Button variant={"outline"}>
+          <Link href={"/submit-form"}>Submit A RSVP</Link>
+        </Button>
       </div>
+
       <div className="rounded-md border">
         <Table>
           <TableHeader>

@@ -12,6 +12,7 @@ import { MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { strings } from "../utils/strings";
 import { submitRSVP } from "../actions/submitRSVP";
+import Link from "next/link";
 
 const RSVPForm = () => {
   const [name, setName] = useState("");
@@ -107,7 +108,7 @@ const RSVPForm = () => {
       </div>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="">
-          <Label htmlFor="name">{strings.nameLabel}</Label>
+          <Label htmlFor="name">Full Name</Label>
           <Input
             id="name"
             value={name}
@@ -119,7 +120,7 @@ const RSVPForm = () => {
           )}
         </div>
         <div className="">
-          <Label htmlFor="email">{strings.emailLabel}</Label>
+          <Label htmlFor="email">Email Address</Label>
           <Input
             id="email"
             value={email}
@@ -151,9 +152,14 @@ const RSVPForm = () => {
             </div>
           </RadioGroup>
         </div>
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Sending..." : strings.submitButton}
-        </Button>
+        <div className="flex justify-between">
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? "Sending..." : strings.submitButton}
+          </Button>
+          <Button variant={"secondary"}>
+            <Link href={"/"}>Back</Link>
+          </Button>
+        </div>
       </form>
     </div>
   );

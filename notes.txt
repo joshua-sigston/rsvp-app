@@ -1,0 +1,6 @@
+send rsvp form
+recieve rsvp through email
+recieve rsvp in account
+accept rsvp by creating account
+accept rsvp by signing in as guest
+send notification of acceptance/decline rsvp
